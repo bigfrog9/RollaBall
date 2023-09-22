@@ -8,7 +8,7 @@ public class CameraScript : MonoBehaviour
 
     private Vector3 offset;
 
-    public float RotationSpeed = 5.0f;
+    //public float RotationSpeed = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,13 +19,13 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        //transform.position = player.transform.position + offset;
+        transform.position = player.transform.position + offset;
 
-        Quaternion camTurnAngle =
-            Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationSpeed, Vector3.up);
+        //Quaternion camTurnAngle =
+          //  Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationSpeed, Vector3.up);
 
-        offset = camTurnAngle * offset;
+        //offset = camTurnAngle * offset;
 
-        transform.LookAt(player.transform.position);
+        //transform.LookAt(player.transform.position);
     }
 }
