@@ -8,25 +8,46 @@ public class EnemyMove : MonoBehaviour
 {
     public float Speed;
 
-    public Transform Enemy;
-    public Transform Pos1;
-    public Transform Pos2;
+    private Vector3 StartingPos;
 
-    public bool movingTo1 = false;
-    public bool movingTo2 = true;
+    public Vector3 GoalPos;
+    
+    public bool movingToStart = false;
+    public bool movingToGoal = true;
 
     // Start is called before the first frame update
     void Start()
     {
-               
+        StartingPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (movingTo1)
+        if (movingToStart)
         {
-            //transform.position = Vector3.MoveTowards(Pos1, Pos2, Speed * Time.deltaTime);
+            //Debug.Log("Moving To Start!");
+
+            transform.position = Vector3.MoveTowards(transform.position, StartingPos, Speed * Time.deltaTime);
+
+            if (transform.position == StartingPos)
+            {
+                movingToGoal = true;
+                movingToStart = false;
+            }
+        }
+
+        if (movingToGoal)
+        {
+            //Debug.Log("Moving To Goal!");
+
+            transform.position = Vector3.MoveTowards(transform.position,GoalPos,Speed*Time.deltaTime);
+
+            if(transform.position == GoalPos)
+            {
+                movingToStart = true;
+                movingToGoal = false;
+            }
         }
     }
 }

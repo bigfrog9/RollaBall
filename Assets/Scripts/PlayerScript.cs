@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerScript : MonoBehaviour
     public TextMeshProUGUI CountText;
 
     public TextMeshProUGUI WinText;
+
+    public bool isGrey = false;
 
     public bool isYellow = false;
     public bool isGreen = false;
@@ -29,7 +32,16 @@ public class PlayerScript : MonoBehaviour
     public GameObject YellowGate;
     public GameObject GreenGate;
 
+    //Platforms
+    public GameObject GreenPlat;
+
     // Start is called before the first frame update
+
+    public void PlayerKill()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     void Start()
     {
         //resetting player colour
@@ -50,12 +62,16 @@ public class PlayerScript : MonoBehaviour
         {
             GreenGate.gameObject.SetActive(true);
             YellowGate.gameObject.SetActive(false);
+
+            GreenPlat.gameObject.SetActive(true);
         }
 
         if (isGreen)
         {
             YellowGate.gameObject.SetActive(true);
             GreenGate.gameObject.SetActive(false);
+
+            GreenPlat.gameObject.SetActive(false);
         }
     }
 
@@ -83,6 +99,19 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
+        if (other.gameObject.CompareTag("Sword"))
+        {
+            KeyColour.color = Color.grey;
+
+            other.gameObject.SetActive(false);
+
+            isGrey = true;
+
+            isYellow = false;
+            isGreen = false;
+        }
+
         //picking up coins
         if (other.gameObject.CompareTag("Coin"))
         {
@@ -96,6 +125,24 @@ public class PlayerScript : MonoBehaviour
             {
                 WinText.gameObject.SetActive(true);
             }
+        }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            if (isGrey)
+            {
+                other.gameObject.SetActive(false);
+            }
+
+            if (isGrey == false)
+            {
+                PlayerKill();
+            }
+        }
+
+        if (other.gameObject.CompareTag("Killzone"))
+        {
+            PlayerKill();
         }
 
         //picking up yellow key
