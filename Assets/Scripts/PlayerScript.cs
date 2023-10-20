@@ -32,6 +32,12 @@ public class PlayerScript : MonoBehaviour
     public GameObject YellowGate;
     public GameObject GreenGate;
 
+    //Gate colliders
+
+    Collider GreenCollider;
+    Collider GreenCollider2;
+    Collider YellowCollider;
+
     //Platforms
     public GameObject GreenPlat;
 
@@ -44,6 +50,12 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
+        //grabbing colliders
+        GreenCollider = GreenGate.gameObject.GetComponent<Collider>();
+        GreenCollider2 = GreenPlat.gameObject.GetComponent<Collider>();
+
+        YellowCollider = YellowGate.gameObject.GetComponent<Collider>();
+
         //resetting player colour
         KeyColour.color = Color.red;
 
@@ -60,18 +72,28 @@ public class PlayerScript : MonoBehaviour
     {
         if (isYellow)
         {
-            GreenGate.gameObject.SetActive(true);
-            YellowGate.gameObject.SetActive(false);
+            GreenCollider.isTrigger=false;
+            GreenCollider2.isTrigger = false;
 
-            GreenPlat.gameObject.SetActive(true);
+            YellowCollider.isTrigger=true;
+
+            //GreenGate.gameObject.SetActive(true);
+            //YellowGate.gameObject.SetActive(false);
+
+            //GreenPlat.gameObject.SetActive(true);
         }
 
         if (isGreen)
         {
-            YellowGate.gameObject.SetActive(true);
-            GreenGate.gameObject.SetActive(false);
+            YellowCollider.isTrigger=false;
 
-            GreenPlat.gameObject.SetActive(false);
+            GreenCollider.isTrigger=true;
+            GreenCollider2.isTrigger=true;
+
+            //YellowGate.gameObject.SetActive(true);
+            //GreenGate.gameObject.SetActive(false);
+
+            //GreenPlat.gameObject.SetActive(false);
         }
     }
 
