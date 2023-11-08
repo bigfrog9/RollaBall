@@ -4,25 +4,16 @@ using UnityEngine;
 
 public class EyeTrigger : MonoBehaviour
 {
-    public GameObject Eyeball;
+    public EyeScript eyeScript;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //public GameObject Eyeball;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Eyeball.SetActive(true);
+            eyeScript.Firing = true;
+            //Eyeball.SetActive(true);
         }
     }
 }

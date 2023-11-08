@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EyeScript : MonoBehaviour
 {
+    public bool Firing=false;
+
     public Transform Player;
 
 
@@ -26,7 +28,11 @@ public class EyeScript : MonoBehaviour
     {
         transform.LookAt(Player);
 
-        ShootAtPlayer();
+        if (Firing)
+        {
+            ShootAtPlayer();
+
+        }
     }
 
     void ShootAtPlayer()
