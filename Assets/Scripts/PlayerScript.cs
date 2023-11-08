@@ -45,7 +45,9 @@ public class PlayerScript : MonoBehaviour
 
     public void PlayerKill()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        SceneManager.LoadSceneAsync(0);
     }
 
     void Start()
