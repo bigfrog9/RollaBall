@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayButton : MonoBehaviour
+public class MenuClick : MonoBehaviour
 {
     public void StartGame()
     {
@@ -15,3 +15,4 @@ public class PlayButton : MonoBehaviour
         Application.Quit();
     }
 }
+
