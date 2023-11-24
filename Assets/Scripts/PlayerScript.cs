@@ -9,6 +9,8 @@ public class PlayerScript : MonoBehaviour
 {
     private int Count;
 
+    public int CurrentLevel;
+
     public TextMeshProUGUI CountText;
 
     public TextMeshProUGUI WinText;
@@ -47,7 +49,7 @@ public class PlayerScript : MonoBehaviour
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-        SceneManager.LoadSceneAsync(2);
+        SceneManager.LoadSceneAsync(1);
     }
 
     void Start()
@@ -147,7 +149,17 @@ public class PlayerScript : MonoBehaviour
 
             if(Count == 0)
             {
-                WinText.gameObject.SetActive(true);
+                if (CurrentLevel == 3)
+                {
+                    WinText.gameObject.SetActive(true);
+
+                }
+
+                else if(CurrentLevel < 3)
+                {
+                    //This equation makes it easy to add more levels
+                    SceneManager.LoadSceneAsync(CurrentLevel + 1);
+                }
             }
         }
 
