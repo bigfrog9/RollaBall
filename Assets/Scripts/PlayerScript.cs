@@ -49,17 +49,17 @@ public class PlayerScript : MonoBehaviour
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-        if (CurrentLevel == 1)
+        if (CurrentLevel == 4)
         {
             SceneManager.LoadSceneAsync(1);
         }
 
-        else if (CurrentLevel == 2)
+        else if (CurrentLevel == 5)
         {
             SceneManager.LoadSceneAsync(2);
         }
 
-        else if (CurrentLevel == 3)
+        else if (CurrentLevel == 6)
         {
             SceneManager.LoadSceneAsync(3);
         }
@@ -162,12 +162,12 @@ public class PlayerScript : MonoBehaviour
 
             if(Count == 0)
             {
-                if (CurrentLevel == 3)
+                if (CurrentLevel == 6)
                 {
                     SceneManager.LoadSceneAsync(0);
                 }
 
-                else if(CurrentLevel < 3)
+                else if(CurrentLevel < 6)
                 {
                     //This equation makes it easy to add more levels
                     SceneManager.LoadSceneAsync(CurrentLevel + 1);
