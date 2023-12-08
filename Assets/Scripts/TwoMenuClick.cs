@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuClick : MonoBehaviour
+public class TwoMenuClick : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadSceneAsync(4);
+        SceneManager.LoadSceneAsync(5);
     }
 
     public void QuitGame()
@@ -15,4 +15,3 @@ public class MenuClick : MonoBehaviour
         Application.Quit();
     }
 }
-

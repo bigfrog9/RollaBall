@@ -11,19 +11,35 @@ public class EnemyMove : MonoBehaviour
     private Vector3 StartingPos;
 
     public Vector3 GoalPos;
+
+    public GameObject Player;
+    public Vector3 PlayerPos;
     
     public bool movingToStart = false;
     public bool movingToGoal = true;
+    public bool chasingPlayer = false;
 
     // Start is called before the first frame update
     void Start()
     {
         StartingPos = transform.position;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        PlayerPos = Player.transform.position;
+
+        if (chasingPlayer)
+        {
+            Speed = 3;
+
+            movingToGoal = false;
+            movingToStart = false;
+            transform.position = Vector3.MoveTowards(transform.position, PlayerPos, Speed * Time.deltaTime);
+        }
+
         if (movingToStart)
         {
             //Debug.Log("Moving To Start!");
@@ -49,5 +65,6 @@ public class EnemyMove : MonoBehaviour
                 movingToGoal = false;
             }
         }
+
     }
 }

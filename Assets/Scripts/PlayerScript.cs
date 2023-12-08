@@ -49,7 +49,20 @@ public class PlayerScript : MonoBehaviour
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-        SceneManager.LoadSceneAsync(1);
+        if (CurrentLevel == 1)
+        {
+            SceneManager.LoadSceneAsync(1);
+        }
+
+        else if (CurrentLevel == 2)
+        {
+            SceneManager.LoadSceneAsync(2);
+        }
+
+        else if (CurrentLevel == 3)
+        {
+            SceneManager.LoadSceneAsync(3);
+        }
     }
 
     void Start()
@@ -151,8 +164,7 @@ public class PlayerScript : MonoBehaviour
             {
                 if (CurrentLevel == 3)
                 {
-                    WinText.gameObject.SetActive(true);
-
+                    SceneManager.LoadSceneAsync(0);
                 }
 
                 else if(CurrentLevel < 3)
